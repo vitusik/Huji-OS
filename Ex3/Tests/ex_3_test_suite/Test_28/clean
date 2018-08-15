@@ -1,0 +1,5 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+rm -f .MapReduceFramework.log test28 scripts/*test_results

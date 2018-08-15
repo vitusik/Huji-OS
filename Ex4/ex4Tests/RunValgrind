@@ -1,0 +1,23 @@
+#!/bin/bash
+# Extract tar
+tar xf Tests.tar
+
+# Copy Files to /tmp
+cp FilesToRead/TheBoyWhoLived /tmp/TheBoyWhoLived
+cp FilesToRead/TheVanishingGlass /tmp/TheVanishingGlass
+cp FilesToRead/TheVanishingGlass /var/tmp/TheVanishingGlass
+
+# Valgrind
+g++ -g -Wall -std=c++11 TestFiles/TestValgrind.cpp -L. CacheFS.a -o Valgrind
+valgrind --leak-check=full --show-possibly-lost=yes --show-reachable=yes --track-origins=yes --undef-value-errors=yes --log-file="ValgrindLog" ./Valgrind
+rm -rf Valgrind
+echo -e "Done.\nReview your ValgrindLog file."
+
+# Remove Files from /tmp
+rm -rf tmp/TheBoyWhoLived /tmp/TheVanishingGlass /var/tmp/TheVanishingGlass
+
+# Clear Test Files
+rm -rf Tests.py *.o FilesToRead ResultFiles TestFiles
+
+# Clear Output Files
+rm -rf CacheLogValgrind StatLogValgrind

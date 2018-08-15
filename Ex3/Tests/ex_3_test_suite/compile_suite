@@ -1,0 +1,13 @@
+#!/bin/bash
+
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+if [[ ! -f "Framework/MapReduceFramework.a" ]] ; then
+	echo "Error: MapReduceFramework library is not in the Framework directory"
+	exit 1
+fi
+
+./Test_6/compile
+./Test_28/compile
+./Test_496/compile

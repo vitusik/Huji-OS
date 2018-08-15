@@ -1,0 +1,33 @@
+-- OS 2017 - ex 3 test suite --
+By Jona Harris
+
+
+The suite depends on 2 files: your library file 'MapReduceFramework.a' and your compiled program 'Search'
+
+Steps:
+
+- Place 'MapReduceFramework.a' inside the 'Framework' directory.
+- Place 'Search' inside the 'Test_496' directory.
+- run 'compile_suite' to compile all tests.
+- run 'run_suite' to run the tests sequentially.
+
+
+
+Test 6:
+A description of the test is inside the Test_6 directory.
+The test is being run with 3 different inputs of different difficulty levels (grid5, grid25, grid125).
+
+
+Test 28:
+Finding words frequencies in a text. There are 3 text files as inputs for the test.
+
+
+Test 496:
+Test for the Search program. There are two inputs for this test - light_data and heavy_data (whose names suggest about their difficulty).
+There are 2 additional scripts in Test_496:
+'runValgrind' - run the test on both inputs using valgrind and write valgrind's log to two files valgrind_light.out and valgrind_heavy.out
+'stress' - run the test many times in a loop (may be good to check there aren't any concurrency problems)
+
+
+
+Have fun...

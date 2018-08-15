@@ -1,0 +1,13 @@
+vitaly1991
+EX: 4
+
+FILES:
+Block.h - header for a class that represents a block inside the cache
+Block.cpp - implementation for a the block class
+Cache_Manage_Alg.h - base class for cache management algorithms
+FBR.cpp - derived from Cache_Manage_Alg, implements FBR alg
+LFU.cpp - derived from Cache_Manage_Alg, implements LFU alg
+LRU.cpp - derived from Cache_Manage_Alg, implements LRU alg
+CacheFS.cpp - the implementation of the cache for the file system
+
+REMARKS:

@@ -1,0 +1,5 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+rm -f .MapReduceFramework.log test6 grids/*test_results

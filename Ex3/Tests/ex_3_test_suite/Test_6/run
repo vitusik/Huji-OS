@@ -1,0 +1,20 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+GRIDS="5 25 125"
+
+echo "- Test 6 -"
+
+for i in $GRIDS
+do
+	echo -n "Grid ${i}: "
+	./test6 grids/grid${i}
+	diff grids/grid${i}_shamans grids/grid${i}_test_results > /dev/null
+	DIFF_STATUS=$?
+	if [ ! "$DIFF_STATUS" -eq "0" ] ; then
+		echo "failed - expected and actual results don't match"
+	else
+		echo "passed"
+	fi
+done

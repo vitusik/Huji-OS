@@ -1,0 +1,10 @@
+#!/bin/bash
+
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+./Test_6/run
+echo
+./Test_28/run
+echo
+./Test_496/run

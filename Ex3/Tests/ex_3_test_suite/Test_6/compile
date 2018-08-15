@@ -1,0 +1,10 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+echo -n "compiling test6... "
+
+g++ -std=c++11 -pthread GridKeysValues.hpp GridMapReduce.hpp GridShamansFinder.cpp  \
+     ../Framework/MapReduceFramework.a -o test6
+
+echo "done"

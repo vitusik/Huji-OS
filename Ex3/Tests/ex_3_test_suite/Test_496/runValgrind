@@ -1,0 +1,9 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+valgrind --leak-check=full --show-possibly-lost=yes --show-reachable=yes --undef-value-errors=yes --track-origins=yes --log-file="$scriptdir/valgrind_light.out" ./Search magic light_data/* 
+
+valgrind --leak-check=full --show-possibly-lost=yes --show-reachable=yes --undef-value-errors=yes --track-origins=yes --log-file="$scriptdir/valgrind_heavy.out" ./Search magic heavy_data/* 
+
+# > /dev/null 2>&1

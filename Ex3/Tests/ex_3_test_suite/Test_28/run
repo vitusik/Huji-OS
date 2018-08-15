@@ -1,0 +1,20 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+SCRIPTS="Inglourious_Basterds   Pulp_Fiction   Reservoir_Dogs"
+
+echo "- Test 28 -"
+
+for i in $SCRIPTS
+do
+	echo -n "${i}: "
+	./test28 scripts/${i}
+	diff -w scripts/${i}_words_frequencies scripts/${i}_test_results > /dev/null
+	DIFF_STATUS=$?
+	if [ ! "$DIFF_STATUS" -eq "0" ] ; then
+		echo "failed - expected and actual results don't match"
+	else
+		echo "passed"
+	fi
+done

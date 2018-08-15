@@ -1,0 +1,17 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+echo -n "Test 496 stress... "
+
+for i in {1..500}
+do
+	./run > /dev/null
+	RUN_STATUS=$?
+	if [ ! "$RUN_STATUS" -eq "0" ] ; then
+		echo "failed"	
+		exit 1
+	fi
+done
+
+echo "passed"

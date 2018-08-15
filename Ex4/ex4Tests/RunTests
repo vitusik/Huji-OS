@@ -1,0 +1,40 @@
+#!/bin/bash
+# Extract tar
+tar xf Tests.tar
+
+# Copy Files to /tmp
+cp FilesToRead/TheBoyWhoLived /tmp/TheBoyWhoLived
+cp FilesToRead/TheVanishingGlass /tmp/TheVanishingGlass
+cp FilesToRead/TheVanishingGlass /var/tmp/TheVanishingGlass
+
+# Compile Test 1
+g++ -c -Wall -std=c++11 -DNDEBUG TestFiles/Test1.cpp -o Test1.o
+g++ Test1.o -L. CacheFS.a -o Test1
+
+# Compile Test 2
+g++ -c -Wall -std=c++11 -DNDEBUG TestFiles/Test2.cpp -o Test2.o
+g++ Test2.o -L. CacheFS.a -o Test2
+
+# Compile Test 3
+g++ -c -Wall -std=c++11 -DNDEBUG TestFiles/Test3.cpp -o Test3.o
+g++ Test3.o -L. CacheFS.a -o Test3
+
+# Compile Test 4
+g++ -c -Wall -std=c++11 -DNDEBUG TestFiles/Test4.cpp -o Test4.o
+g++ Test4.o -L. CacheFS.a -o Test4
+
+# Compile Test 5
+g++ -c -Wall -std=c++11 -DNDEBUG TestFiles/Test5.cpp -o Test5.o
+g++ Test5.o -L. CacheFS.a -o Test5
+
+# Run Tests
+python3 Tests.py
+
+# Remove Files from /tmp
+rm -rf tmp/TheBoyWhoLived /tmp/TheVanishingGlass /var/tmp/TheVanishingGlass
+
+# Clear Test Files
+rm -rf Tests.py *.o Test1 Test2 Test3 Test4 Test5 FilesToRead ResultFiles TestFiles
+
+# Clear Output Files
+rm -rf BufferOutput1 BufferOutput2 BufferOutput3 BufferOutput4 BufferOutput5 CacheLog1 CacheLog2 CacheLog3 CacheLog4 CacheLog5 StatLog1 StatLog2 StatLog3 StatLog4 StatLog5

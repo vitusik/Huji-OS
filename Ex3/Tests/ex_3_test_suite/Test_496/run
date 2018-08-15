@@ -1,0 +1,42 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+
+SEARCH_PROGRAM=Search
+
+echo "- Test 496 -"
+
+if [[ ! -x "$SEARCH_PROGRAM" ]] ; then
+	echo "Error: $SEARCH_PROGRAM was not found or isn't executable"
+	exit 1
+fi
+
+# run
+
+./$SEARCH_PROGRAM magic light_data/* > light_data/Search_result
+./$SEARCH_PROGRAM magic heavy_data/* > heavy_data/Search_result
+
+
+
+# check results
+
+diff -w light_data/Search_result light_data/true_results
+EXIT_STATUS=$?
+if [ ! "$EXIT_STATUS" -eq "0" ] ; then
+	echo "light_data: failed - expected and actual results don't match. see true_results inside the light_data directory"
+	exit 1
+else
+	echo "light_data: passed"
+fi
+
+diff -w heavy_data/Search_result heavy_data/true_results
+EXIT_STATUS=$?
+if [ ! "$EXIT_STATUS" -eq "0" ] ; then
+	echo -e "heavy_data: failed - expected and actual results don't match. see true_results inside the heavy_data directory\n"
+	exit 1
+else
+	echo "heavy_data: passed"
+fi
+
+

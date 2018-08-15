@@ -1,0 +1,8 @@
+#!/bin/bash
+
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+./Test_6/clean
+./Test_28/clean
+./Test_496/clean

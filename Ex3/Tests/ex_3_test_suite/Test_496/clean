@@ -1,0 +1,5 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+rm -rf heavy_data light_data .MapReduceFramework.log valgrind_light.out valgrind_heavy.out

@@ -1,0 +1,90 @@
+vitaly1991
+EX: 3
+
+FILES:
+MapReduceFramework.cpp - implementation of the map reduce algorithm
+Search.cpp - small app that uses the framework
+
+REMARKS:
+First of all I hate pointers.
+
+important note:
+I've decided not to add checks for success of push back and pop action on
+the vector, because it felt a little bit redundant and it made the code bloat
+
+
+design of search:
+Ive created two sub structs File and Amount, File derives from each of the keys
+and Amount from each of the values, the File struct represents the string of
+the name of the file, and Amount is the amount of times it have appeared.
+given arguments to the program the first one will be the substring to be found
+and all of the others will be directories, in case one of them is not than
+its not used, in case an argument is a directory then a search begins and
+all of the files(including directories) that are found become the input
+for Map function, the map function gets a file name and if the substring
+is found within its name than its emitted via Emit2, the reduce function
+goes over the given vectors, sums the amounts, and creates new pair
+of the file with the same name, and sum as v3base value.
+
+Q1:
+the shuffle thread will use conditional variable to wait, and will be awaken
+by using pthread_cond_signal after writing a chunk of data, and it will be
+called at the end of ExecMap threads.
+the reason that we'll use pthread_cond_timedwait is because of possible
+deadlock that occurs when shuffle sorts the data, and in the same time
+other threads send him signals, shuffle wont receive those signal when he's
+awake, so its possible that when shuffle gets to the wait line in the code
+he may not receive a signal.
+
+Q2:
+I would use at least 16, because hyper threading double the amount of processors
+that the OS see, so if I have 8 cores, then with HT I'll have 16 virtual one's
+so to make the most use of my CPU, I would use the framework with a least 16
+threads.
+
+Q3:
+Higher is better.
+Utilizing Multi Cores:
+Multi-processing
+Posix threads
+User Level threads
+Single Processor
+
+Sophisticated scheduler:
+Multi-processing
+Posix threads
+User Level threads
+Single Processor
+
+Communication time:
+Single Processor
+User Level threads
+Posix threads
+Multi-processing
+
+Ability to progress:
+Multi-processing - u
+Posix threads
+User Level threads
+Single Processor
+
+assumtion - no I/O
+Overall speed:
+Single Processor - no overhead from context switch, because there is none
+User Level threads - small overhead
+Posix threads - medium overhead
+Multi-processing
+
+
+
+
+Q4:
+Global Variables
+
+Q5:
+deadlock is when we have two threads that each needs two locks in order
+to run, however each thread has only one, and so they stuck in a deadlock
+
+livelock is when we have two threads in the same setting, however
+whenever a thread sees he cant get all of the needed locks he unlocks his locks
+so each time both of the threads drop their locks and don't progress

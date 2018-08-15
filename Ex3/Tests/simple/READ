@@ -1,0 +1,9 @@
+test1:
+אם הוא נכנס ללולאה אין סופית אז כנראה שהshuffle שלכם נשאר בwait למרות שכל הmap סיימו.
+אחרת הוא אמור להדפיס "if only this was printed great. if some thing else was printed it is a problem"
+
+test2:
+סתם טסט אמור להדפיס good
+
+test3:
+הוא ממש כמו test2 רק שהוא לא אמור למחוק את K2 ו-V2 ולכן אם יש segfault או שה-valgrind נותן error כנראה שנמחק זיכרון פעמים ואז אתם מוחקים את K2 ו-V2  למרות שאתם לא אמורים.

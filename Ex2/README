@@ -1,0 +1,40 @@
+vitaly1991
+EX: 2
+
+FILES:
+thread.h - a class which represents a single thread
+thread.cpp
+uthreads.cpp - the implementation of user threads library
+
+REMARKS:
+if one of the tests checks whether the signal mask has changed in some thread,
+and the check will be made using memcmp, my lib fails, however the signal mask
+is the same, it some kind of bug that I wasn't able to resolve
+
+Q1:
+a good usage for user level threads would be a large calculation of some sort
+that does not require access to a file, and does not require system calls
+in order to finish it, that way the disadvantages of user level threads are
+eliminated and we left only with the advantages
+
+Q2:
+advantages in creating a processes instead kernel level thread:
+* if one tab crashes, only that tab crashes, and the web browser is still
+  working
+* Google chrome has so much stuff going on inside of it, that each tab is
+  basically a small scale OS, therefore it makes more sense to create a
+  processes for each tab
+
+disadvantages:
+* higher overhead
+* takes more resources from the machine
+
+Q3:
+during the execution of the command kill pid the SIGTERM is sent
+
+Q4:
+real time is simply the standard time we all used to, virtual time
+is time simulated by the OS, and it can be used to measure working
+time of a process, like in my user thread library, and real time
+was used in the previous ex to measure amount of time each
+action took.

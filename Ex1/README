@@ -1,0 +1,35 @@
+vitaly1991
+EX: 1
+
+FILES:
+osm.cpp - the implemantation of osm.h
+
+REMARKS:
+None.
+
+Task 1:
+The program WhatIDo has to recieve one argument which can be a number or a 
+string,then the program creates in the current working directory a directory
+name "Welcome", inside that directory it creates another one named "To", 
+each dir created with owner + group full permissions, and others can only 
+read and execute inside that it creates and opens a file name "OS2016" with 
+read+write permissions for everyone, if the file already exists then the 
+program overwrites that file, after that writes to a buffer info about the 
+file, after that it writes to it 184 chars + the length of the given argument,
+after that it closes the file, deletes the file, and all of the directories it 
+has created, and then terminates all the threads that were created in the 
+programs process.
+
+system calls that helped understand the program:
+mkdir - creates a dir, receives path and optional mode which sets the dir 
+		permissions.
+rmdir - removes a dir, receives path to the dir.
+open - opens and possibly creates a file, recieves path and optional flags 
+		and mode.
+unlink - deletes a name and possibly the file it refers to.
+fstat - receives a path to a file and a pointer to stat structure which 
+		holds info about the file
+exit_group - exits and terminates all threads in the process 
+
+Task 2:
+All of the messure time functions use loop unrolling.
